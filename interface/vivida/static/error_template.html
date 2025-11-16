@@ -1,0 +1,14 @@
+{% extends 'layout/base_template.html' %}
+
+{% block styles %}
+    <title>Ошибка</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth_styles.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title">{{ status_code }}</h1>
+        <p>{{ error }}</p>
+        <a href="{{ link }}">Назад</a>
+    </div>
+{% endblock %}

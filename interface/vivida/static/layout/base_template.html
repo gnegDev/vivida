@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base_styles.css') }}">
+    {% block styles %} {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" style="color: white; text-decoration: none;"><div class="logo-container">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Логотип" class="logo-image">
+                    <div class="logo">Vivida</div>
+                </div></a>
+                <a href="/dashboard" class="main-link">Дэшборд</a>
+                <a href="/upload" class="main-link">Анализ</a>
+                <a href="/auth" class="main-link">Войти</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Сканити. All rights reserved.</p>
+                <p>Мазут Продакшн</p>
+                <img src="{{ url_for('static', filename='images/mirea.png') }}" alt="Логотип" style="height: 50px">
+                <img src="{{ url_for('static', filename='images/itmo.png') }}" alt="Логотип" style="height: 50px">
+                <img src="{{ url_for('static', filename='images/secha.png') }}" alt="Логотип" style="height: 50px">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

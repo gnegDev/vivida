@@ -1,0 +1,47 @@
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.title {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.menu-container {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.menu-title {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    border-bottom: 2px solid #7B1113;
+    padding-bottom: 0.5rem;
+}
+
+
+.menu-btn {
+    display: block;
+    background-color: #7B1113;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.menu-btn:hover {
+    background-color: #610d0f;
+}
