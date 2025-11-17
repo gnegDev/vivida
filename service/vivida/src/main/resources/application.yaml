@@ -3,14 +3,16 @@ spring:
     name: vivida
 
   datasource:
-    url: ${POSTGRES_JDBC_URL:jdbc:postgresql://localhost:5432/vivida_dev}
-    username: ${POSTGRES_USERNAME:postgres}
-    password: ${POSTGRES_PASSWORD:root}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/vivida_dev}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:root}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 minio:
   endpoint: ${S3_ENDPOINT:http://localhost:9000}
