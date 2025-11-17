@@ -48,7 +48,7 @@ public record CreatePatientClinicalProfileRequest(
         Integer kps,
 
         @JsonProperty("neurological_symptoms")
-        String neurologicalSymptoms,
+        List<String> neurologicalSymptoms,
 
         String treatment,
 
@@ -73,10 +73,25 @@ public record CreatePatientClinicalProfileRequest(
         @JsonProperty("functional_status")
         FunctionalStatus functionalStatus,
 
-        @JsonProperty("chemotherapy")
-        ChemotherapyTreatmentProfileDto chemotherapyTreatmentProfile,
+        @JsonProperty("chemo_drug")
+        String chemoDrug,
 
-        @JsonProperty("radiotherapy")
-        RadiotherapyTreatmentProfileDto radiotherapyTreatmentProfile
+        @JsonProperty("chemo_dose_mg_per_m2")
+        Float chemoDose,
+
+        @JsonProperty("chemo_interval_days")
+        Integer chemoIntervalDays,
+
+        @JsonProperty("chemo_cycles")
+        Integer chemoCycles,
+
+        @JsonProperty("radiation_total_dose_Gy")
+        Float radiationTotalDose,
+
+        @JsonProperty("radiation_fraction_dose_Gy")
+        Float radiationFractionDose,
+
+        @JsonProperty("radiation_fractions")
+        Integer radiationFractions
 ) {
 }

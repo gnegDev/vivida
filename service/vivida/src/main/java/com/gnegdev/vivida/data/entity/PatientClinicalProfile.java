@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -31,7 +33,7 @@ public class PatientClinicalProfile {
     @JoinColumn(name = "patient_chemo_regimen_id")
     @JsonManagedReference
     @JsonProperty("patient_chemo_regimen")
-    private PatientClinicalRegimen patientClinicalRegimen;
+    private PatientChemoRegimen patientChemoRegimen;
 
     @Column(name = "stage", nullable = false)
     private Integer stage;
@@ -86,20 +88,14 @@ public class PatientClinicalProfile {
     @Column(name = "kps", nullable = false)
     private Integer kps;
 
-    @Column(name = "neurological_symptoms", nullable = false)
+    @ElementCollection
+    @Column(name = "neurological_symptoms")
+    @CollectionTable(name = "patient_clinical_profile_neurological_symptoms", joinColumns = @JoinColumn(name = "owner_id"))
     @JsonProperty("neurological_symptoms")
-    private String neurologicalSymptoms;
+    private List<String> neurologicalSymptoms = new ArrayList<>();
 
     @Column(name = "treatment", nullable = false)
     private String treatment;
-
-    @Embedded
-    @JsonProperty("chemotherapy")
-    private ChemotherapyTreatmentProfile chemotherapyTreatmentProfile;
-
-    @Embedded
-    @JsonProperty("radiotherapy")
-    private RadiotherapyTreatmentProfile radiotherapyTreatmentProfile;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "resection_extent", nullable = false)
@@ -131,4 +127,32 @@ public class PatientClinicalProfile {
     @Column(name = "functional_status", nullable = false)
     @JsonProperty("functional_status")
     private FunctionalStatus functionalStatus;
+
+    @Column(name = "chemo_drug")
+    @JsonProperty("chemo_drug")
+    private String chemoDrug;
+
+    @Column(name = "chemo_dose")
+    @JsonProperty("chemo_dose_mg_per_m2")
+    private Float chemoDose;
+
+    @Column(name = "chemo_interval_days")
+    @JsonProperty("chemo_interval_days")
+    private Integer chemoIntervalDays;
+
+    @Column(name = "chemo_cycles")
+    @JsonProperty("chemo_cycles")
+    private Integer chemoCycles;
+
+    @Column(name = "radiation_total_dose")
+    @JsonProperty("radiation_total_dose_Gy")
+    private Float radiationTotalDose;
+
+    @Column(name = "radiation_fraction_dose")
+    @JsonProperty("radiation_fraction_dose_Gy")
+    private Float radiationFractionDose;
+
+    @Column(name = "radiation_fractions")
+    @JsonProperty("radiation_fractions")
+    private Integer radiationFractions;
 }

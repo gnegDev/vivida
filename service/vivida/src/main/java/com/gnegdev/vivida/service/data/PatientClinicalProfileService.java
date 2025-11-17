@@ -1,11 +1,8 @@
 package com.gnegdev.vivida.service.data;
 
 import com.gnegdev.vivida.data.dto.CreatePatientClinicalProfileRequest;
-import com.gnegdev.vivida.data.dto.PatientClinicalRegimentResponse;
 import com.gnegdev.vivida.data.entity.PatientClinicalProfile;
-import com.gnegdev.vivida.data.entity.PatientClinicalRegimen;
 import com.gnegdev.vivida.data.entity.User;
-import com.gnegdev.vivida.service.analysis.AnalysisClient;
 import com.gnegdev.vivida.service.data.repository.PatientClinicalProfileRepository;
 import com.gnegdev.vivida.util.mapper.PatientClinicalProfileMapper;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +18,6 @@ import java.util.UUID;
 public class PatientClinicalProfileService {
     private final PatientClinicalProfileRepository patientClinicalProfileRepository;
     private final PatientClinicalProfileMapper patientClinicalProfileMapper;
-    private final AnalysisClient analysisClient;
     private final UserService userService;
 
     public PatientClinicalProfile createPatientClinicalProfile(CreatePatientClinicalProfileRequest request) {
@@ -29,11 +25,6 @@ public class PatientClinicalProfileService {
         User user = userService.getUserReferenceById(request.user_id());
 
         patientClinicalProfile.setUser(user);
-
-        PatientClinicalRegimentResponse response = analysisClient.analyzePatientClinicalProfile(patientClinicalProfile);
-        PatientClinicalRegimen patientClinicalRegimen = patientClinicalProfileMapper.toEntity(response);
-
-        patientClinicalProfile.setPatientClinicalRegimen(patientClinicalRegimen);
 
         log.info("Converted DTO:\n{}\nto entity:\n{}", request, patientClinicalProfile);
 
