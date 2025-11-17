@@ -30,8 +30,8 @@
                         <label for="gender">Пол пациента</label>
                         <select id="gender" name="gender" required>
                             <option value="">Выберите пол</option>
-                            <option value="M">Мужской</option>
-                            <option value="F">Женский</option>
+                            <option value="М">Мужской</option>
+                            <option value="Ж">Женский</option>
                         </select>
                     </div>
                 </div>
@@ -163,19 +163,14 @@
 
                     <div class="form-group">
                         <label for="treatment">Тип лечения</label>
-                        <select id="treatment" name="treatment" required>
-                            <option value="">Выберите тип лечения</option>
-                            <option value="chemotherapy">Химиотерапия</option>
-                            <option value="radiotherapy">Радиотерапия</option>
-                            <option value="chemoradiotherapy">Комбинированный</option>
-                        </select>
+                        <input type="text" id="treatment" name="treatment" placeholder="Например: химиотерапия, лучевая терапия..." required>
                     </div>
 
-                    <h3>Заполняется если тип лечения химиотерапия или комбинированный</h3>
+                    <h3>Заполняется если тип лечения химиотерапия или комбинированное</h3>
 
                     <div class="form-group">
                         <label for="chemo_drug">Препарат</label>
-                        <input type="text" id="chemo_drug" name="chemo_drug" placeholder="Например: Temozolomide">
+                        <input type="text" id="chemo_drug" name="chemo_drug" placeholder="Например: temozolomide">
                     </div>
 
                     <div class="form-group">
@@ -193,7 +188,7 @@
                         <input type="number" id="chemo_cycles" name="chemo_cycles" min="0" placeholder="Например: 6">
                     </div>
 
-                    <h3>Заполняется если тип лечения радиотерапия или комбинированный</h3>
+                    <h3>Заполняется если тип лечения радиотерапия или комбинированное</h3>
 
                     <div class="form-group">
                         <label for="radiation_total_dose_Gy">Полная доза радиации</label>

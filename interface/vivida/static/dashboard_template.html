@@ -14,14 +14,7 @@
                     <div class="panel">
                         <div class="panel-content">
                             <h3 class="panel-title">{{ patient['patient_id'] }}</h3>
-                            <p class="panel-description">
-                                {% if patient['gender'] == 'M' %}
-                                    Мужчина
-                                {% else %}
-                                    Женщина
-                                {% endif %}
-                                , {{ patient['age'] }} лет
-                            </p>
+                            <p class="panel-description">{{ patient['chemo_regimen'] }}</p>
                             <a href="dashboard/{{ patient['patient_id'] }}" class="panel-button">Подробнее</a>
                         </div>
                     </div>

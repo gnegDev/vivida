@@ -32,19 +32,7 @@ def upload_page():
         body = request.form.to_dict()
 
         body["user_id"] = user_id
-
-        body["chemotherapy"] = {
-            "drug": body["chemo_drug"] or "0",
-            "dose_mg_per_m2": body["chemo_dose_mg_per_m2"] or "0",
-            "interval_days": body["chemo_interval_days"] or "0",
-            "cycles": body["chemo_cycles"] or "0"
-        }
-
-        body["radiotherapy"] = {
-            "total_dose_Gy": body["radiation_total_dose_Gy"] or "0",
-            "fraction_dose_Gy": body["radiation_fraction_dose_Gy"] or "0",
-            "fractions": body["radiation_fractions"] or "0"
-        }
+        body["neurological_symptoms"] = list(map(str.strip ,body["neurological_symptoms"].split(",")))
 
         for key, value in body.items():
             print(key, value)

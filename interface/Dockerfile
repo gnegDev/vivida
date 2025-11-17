@@ -5,6 +5,6 @@ COPY . .
 
 RUN pip3 install --upgrade pip -r requirements.txt
 
-WORKDIR vivida
+WORKDIR scanity
 
 ENTRYPOINT ["python3", "main.py"]
