@@ -24,7 +24,27 @@
             <div class="info-panel">
                 <h3 class="info-title">Оптимиация плана лечения</h3>
                 <div class="info-content" id="info2">
-                    <p><strong>patient_chemo_regimen: </strong>{{ patient_data['patient_chemo_regimen'] }}</p>
+                    <h3>Общее</h3>
+                    <p><strong>Рекомендация: </strong>{{ patient_data['patient_chemo_regimen']['recommendation'] }}</p>
+
+                    <br>
+                    <h3>План пользователя</h3>
+                    <p><strong>План пользователя: </strong>{{ patient_data['patient_chemo_regimen']['doctor_plan']['treatment_type'] }}</p>
+                    <p><strong>Прогноз размера опухоли через 12 мес: </strong>{{ patient_data['patient_chemo_regimen']['doctor_plan']['prediction'] }}</p>
+
+                    <br>
+                    <h3>Оптимизация плана врача</h3>
+                    <p><strong>Тип лечения: </strong>{{ patient_data['patient_chemo_regimen']['local_optimal']['treatment_type'] }}</p>
+                    <p><strong>Процент улучшения: </strong>{{ patient_data['patient_chemo_regimen']['local_optimal']['improvement_percent'] }}</p>
+                    <p><strong>Прогноз размера опухоли через 12 мес: </strong>{{ patient_data['patient_chemo_regimen']['local_optimal']['prediction'] }}</p>
+
+                    <br>
+                    <h3>Предлагаемый план лечения</h3>
+                    <p><strong>Тип лечения: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['treatment_type'] }}</p>
+                    <p><strong>Процент улучшения: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['improvement_percent'] }}</p>
+                    <p><strong>Прогноз размера опухоли через 12 мес: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['prediction'] }}</p>
+                    <p><strong>Химиотерапия: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['chemotherapy'] }}</p>
+                    <p><strong>Радиотерапия: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['radiotherapy'] }}</p>
                 </div>
                 <a href="#" class="panel-button">Скачать отчёт</a>
             </div>
