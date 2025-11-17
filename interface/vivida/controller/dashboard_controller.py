@@ -22,7 +22,8 @@ def render_main_page():
         patients.append({
             "patient_id":  patient["id"],
             "gender": patient["gender"],
-            "age": patient["age"]
+            "age": patient["age"],
+            "optimization": patient["patient_chemo_regimen"]["global_optimal"]
         })
 
     return render_template("dashboard_template.html", patients=patients)
