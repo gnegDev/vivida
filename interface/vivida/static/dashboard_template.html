@@ -2,34 +2,71 @@
 
 {% block styles %}
     <title>Дэшборд</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="page-title">Загруженные данные</h1>
-        <div class="panels-grid">
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">ДЭШБОРД</h1>
+        </section>
+
+        <section class="dashboard-table">
             {% if patients|length > 0 %}
                 {% for patient in patients %}
-                    <div class="panel">
-                        <div class="panel-content">
-                            <h3 class="panel-title">{{ patient['patient_id'] }}</h3>
-                            <p class="panel-description">
-                                {% if patient['gender'] == 'M' %}Мужчина{% else %}Женщина{% endif %}, {{ patient['age'] }} лет
-                            </p>
-                            <a href="dashboard/{{ patient['patient_id'] }}" class="panel-button">Подробнее</a>
+                    <div class="dashboard-row patient-header-row">
+                        <div class="dashboard-cell full-width">
+                            <h3 class="patient-card-title">ПАЦИЕНТ {{ patient['patient_id'] }}</h3>
+                        </div>
+                    </div>
+                    <div class="dashboard-row column-headers-row">
+                        <div class="dashboard-cell">
+                            <h4 class="column-title">АНАМНЕЗ</h4>
+                        </div>
+                        <div class="dashboard-cell">
+                            <h4 class="column-title">ОПТИМИЗАЦИЯ</h4>
+                        </div>
+                        <div class="dashboard-cell">
+                            <h4 class="column-title">РЕКОМЕНДАЦИЯ</h4>
+                        </div>
+                    </div>
+                    <div class="dashboard-row data-row">
+                        <div class="dashboard-cell">
+                            <div class="patient-card-data">
+                                <p><span>Возраст:</span> {{ patient['age'] }}</p>
+                                <p><span>Пол:</span> {% if patient['gender'] == 'M' %}мужчина{% else %}женщина{% endif %}</p>
+                                <p><span>Статус:</span> данные загруженны</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-cell">
+                            <div class="patient-card-data">
+                                <p>{{ patient['optimization'] }}</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-cell">
+                            <a href="dashboard/{{ patient['patient_id'] }}" class="submit-btn" style="display: inline-block; margin: 0; padding: 12px 25px; font-size: 14px;">Подробнее</a>
                         </div>
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="panel">
-                    <div class="panel-content">
-                        <h3 class="panel-title">Нет загруженных данных</h3>
-                        <p class="panel-description">Загрузите план лечения для анализа</p>
-                        <a href="/upload" class="panel-button">Зарузить</a>
+                <div class="dashboard-row patient-header-row">
+                    <div class="dashboard-cell full-width">
+                        <h3 class="patient-card-title">НЕТ ЗАГРУЖЕННЫХ ДАННЫХ</h3>
+                    </div>
+                </div>
+                <div class="dashboard-row data-row">
+                    <div class="dashboard-cell">
+                        <div class="patient-card-data">
+                            <p>Загрузите данные пациента для анализа и просмотра результатов оптимизации схемы лечения.</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-cell">
+                    </div>
+                    <div class="dashboard-cell">
+                        <a href="/upload" class="submit-btn" style="display: inline-block; margin: 0; padding: 12px 25px; font-size: 14px;">Загрузить</a>
                     </div>
                 </div>
             {% endif %}
-        </div>
-    </div>
+        </section>
+    </main>
 {% endblock %}

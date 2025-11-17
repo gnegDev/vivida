@@ -2,52 +2,78 @@
 
 {% block styles %}
     <title>План лечения</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/scan_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="page-title">Информация о пациенте</h1>
-        
-        <div class="info-section">
-            <div class="info-panel">
-                <h3 class="info-title">Информация о пациенте</h3>
-                <div class="info-content" id="info1">
-                    {% for key, value in patient_data.items() %}
-                        {% if key != 'patient_chemo_regimen' %}
-                            <p><strong>{{ key }}: </strong>{{ value }}</p>
-                        {% endif %}
-                    {% endfor %}
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">РЕЗУЛЬТАТЫ</h1>
+        </section>
+
+        <section class="results">
+            <div class="results-grid">
+                <div class="result-column">
+                    <h3 class="column-title">ИНФОРМАЦИЯ ПАЦИЕНТА</h3>
+                    <div class="result-content" id="info1">
+                        {% for key, value in patient_data.items() %}
+                            {% if key != 'patient_chemo_regimen' %}
+                                <p><span style="color: rgba(185, 213, 230, 0.7);">{{ key }}:</span> {{ value }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-                <a href="#" class="panel-button">Удалить данные</a>
-            </div>
-            <div class="info-panel">
-                <h3 class="info-title">Оптимиация плана лечения</h3>
-                <div class="info-content" id="info2">
-                    <h3>Общее</h3>
-                    <p><strong>Рекомендация: </strong>{{ patient_data['patient_chemo_regimen']['recommendation'] }}</p>
-
-                    <br>
-                    <h3>План пользователя</h3>
-                    <p><strong>План пользователя: </strong>{{ patient_data['patient_chemo_regimen']['doctor_plan']['treatment_type'] }}</p>
-                    <p><strong>Прогноз размера опухоли через 12 мес: </strong>{{ patient_data['patient_chemo_regimen']['doctor_plan']['prediction'] }}</p>
-
-                    <br>
-                    <h3>Оптимизация плана врача</h3>
-                    <p><strong>Тип лечения: </strong>{{ patient_data['patient_chemo_regimen']['local_optimal']['treatment_type'] }}</p>
-                    <p><strong>Процент улучшения: </strong>{{ patient_data['patient_chemo_regimen']['local_optimal']['improvement_percent'] }}</p>
-                    <p><strong>Прогноз размера опухоли через 12 мес: </strong>{{ patient_data['patient_chemo_regimen']['local_optimal']['prediction'] }}</p>
-
-                    <br>
-                    <h3>Предлагаемый план лечения</h3>
-                    <p><strong>Тип лечения: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['treatment_type'] }}</p>
-                    <p><strong>Процент улучшения: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['improvement_percent'] }}</p>
-                    <p><strong>Прогноз размера опухоли через 12 мес: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['prediction'] }}</p>
-                    <p><strong>Химиотерапия: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['chemotherapy'] }}</p>
-                    <p><strong>Радиотерапия: </strong>{{ patient_data['patient_chemo_regimen']['global_optimal']['radiotherapy'] }}</p>
+                <div class="result-column">
+                    <h3 class="column-title">ПЛАН ВРАЧА</h3>
+                    <div class="result-content" id="info2">
+                        <p><span style="color: rgba(185, 213, 230, 0.7);">Тип лечения:</span><br>{{ patient_data['patient_chemo_regimen']['doctor_plan']['treatment_type'] }}</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Прогноз через 12 мес:</span><br>{{ patient_data['patient_chemo_regimen']['doctor_plan']['prediction'] }} см</p>
+                    </div>
                 </div>
-                <a href="#" class="panel-button">Скачать отчёт</a>
+                <div class="result-column">
+                    <h3 class="column-title">ОПТИМАЛЬНЫЙ ПЛАН</h3>
+                    <div class="result-content">
+                        <p><span style="color: rgba(185, 213, 230, 0.7);">Рекомендация:</span><br>{{ patient_data['patient_chemo_regimen']['recommendation'] }}</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Улучшение:</span><br>{{ patient_data['patient_chemo_regimen']['global_optimal']['improvement_percent'] }}%</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Прогноз:</span><br>{{ patient_data['patient_chemo_regimen']['global_optimal']['prediction'] }} см</p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <section class="results">
+            <h2 class="section-title" style="margin-bottom: 30px;">ДЕТАЛИ ОПТИМИЗАЦИИ</h2>
+            <div class="results-grid">
+                <div class="result-column">
+                    <h3 class="column-title">ЛОКАЛЬНАЯ ОПТИМИЗАЦИЯ</h3>
+                    <div class="result-content">
+                        <p><span style="color: rgba(185, 213, 230, 0.7);">Тип лечения:</span><br>{{ patient_data['patient_chemo_regimen']['local_optimal']['treatment_type'] }}</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Улучшение:</span><br>{{ patient_data['patient_chemo_regimen']['local_optimal']['improvement_percent'] }}%</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Прогноз:</span><br>{{ patient_data['patient_chemo_regimen']['local_optimal']['prediction'] }} см</p>
+                    </div>
+                </div>
+                <div class="result-column">
+                    <h3 class="column-title">ГЛОБАЛЬНАЯ ОПТИМИЗАЦИЯ</h3>
+                    <div class="result-content">
+                        <p><span style="color: rgba(185, 213, 230, 0.7);">Тип лечения:</span><br>{{ patient_data['patient_chemo_regimen']['global_optimal']['treatment_type'] }}</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Улучшение:</span><br>{{ patient_data['patient_chemo_regimen']['global_optimal']['improvement_percent'] }}%</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Прогноз:</span><br>{{ patient_data['patient_chemo_regimen']['global_optimal']['prediction'] }} см</p>
+                    </div>
+                </div>
+                <div class="result-column">
+                    <h3 class="column-title">НАЗНАЧЕНИЕ</h3>
+                    <div class="result-content">
+                        <p><span style="color: rgba(185, 213, 230, 0.7);">Химиотерапия:</span><br>{{ patient_data['patient_chemo_regimen']['global_optimal']['chemotherapy'] }}</p>
+                        <p style="margin-top: 15px;"><span style="color: rgba(185, 213, 230, 0.7);">Радиотерапия:</span><br>{{ patient_data['patient_chemo_regimen']['global_optimal']['radiotherapy'] }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="button-wrapper">
+            <a href="/dashboard" class="submit-btn" style="display: inline-block; text-decoration: none;">ВЕРНУТЬСЯ В ДЭШБОРД</a>
+            <a href="/dashboard" class="submit-btn" style="display: inline-block; text-decoration: none; margin-left: 20px;">УДАЛИТЬ ДАННЫЕ</a>
+            <button onclick="window.print()" class="submit-btn" style="margin-left: 20px;">СКАЧАТЬ ОТЧЁТ</button>
         </div>
-    </div>
+    </main>
 {% endblock %}

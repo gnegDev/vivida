@@ -1,266 +1,148 @@
 {% extends 'layout/base_template.html' %}
 
 {% block styles %}
-    <title>Загрузка плана</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload_styles.css') }}">
+    <title>Анализ плана лечения</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="page-title">Анализ плана лечения</h1>
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">АНАЛИЗ</h1>
+        </section>
         
-        <div class="form-container">
-            <h2 class="form-title">Данные о плане лечения</h2>
-            <form id="clinicalProfileForm" action="/upload" method="post">
-    <!-- Основная информация -->
-                <div class="form-section">
-                    <h3>Основная информация</h3>
+        <section class="simulator-grid">
+            <div class="form-section">
+                <h3 class="section-title">ОСНОВНАЯ<br>ИНФОРМАЦИЯ</h3>
+                <form id="clinicalProfileForm" action="/upload" method="post">
+                    <input type="number" id="stage" name="stage" min="1" max="4" class="form-input" placeholder="Стадия (1-4)" required>
+                    <input type="number" id="age" name="age" min="0" max="120" class="form-input" placeholder="Возраст" required>
+                    <select id="gender" name="gender" class="form-input" required>
+                        <option value="">Пол</option>
+                        <option value="M">Мужской</option>
+                        <option value="F">Женский</option>
+                    </select>
 
-                    <div class="form-group">
-                        <label for="stage">Стадия глиобластомы (1-4)</label>
-                        <input type="number" id="stage" name="stage" min="1" max="4" placeholder="Введите стадию 1-4" required>
-                    </div>
+                    <p style="font-size: 14px; margin-top: 15px; margin-bottom: 10px;">Анамнез и история</p>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 8px; cursor: pointer;">
+                        <input type="checkbox" name="family_history" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        Опухоли у родственников
+                    </label>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 12px; cursor: pointer;">
+                        <input type="checkbox" name="previous_radiation" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        Лучевая терапия на голову
+                    </label>
+            </div>
 
-                    <div class="form-group">
-                        <label for="age">Возраст пациента</label>
-                        <input type="number" id="age" name="age" min="0" max="120" placeholder="Введите возраст" required>
-                    </div>
+            <div class="form-section">
+                <h3 class="section-title">ЛОКАЛИЗАЦИЯ<br>И МАРКЕРЫ</h3>
+                    <select id="tumorLocation" name="tumor_location" class="form-input" required>
+                        <option value="">Локализация опухоли</option>
+                        <option value="frontal_lobe">Лобная доля</option>
+                        <option value="multifocal">Мультифокальная</option>
+                        <option value="occipital_lobe">Затылочная доля</option>
+                        <option value="parietal_lobe">Теменная доля</option>
+                        <option value="temporal_lobe">Височная доля</option>
+                    </select>
+                    <select id="lateralization" name="lateralization" class="form-input" required>
+                        <option value="">Латерализация</option>
+                        <option value="LEFT">Левая</option>
+                        <option value="RIGHT">Правая</option>
+                        <option value="BILATERAL">Двусторонняя</option>
+                    </select>
 
-                    <div class="form-group">
-                        <label for="gender">Пол пациента</label>
-                        <select id="gender" name="gender" required>
-                            <option value="">Выберите пол</option>
-                            <option value="M">Мужской</option>
-                            <option value="F">Женский</option>
-                        </select>
-                    </div>
-                </div>
+                    <p style="font-size: 14px; margin-top: 15px; margin-bottom: 10px;">Молекулярные маркеры</p>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 8px; cursor: pointer;">
+                        <input type="checkbox" name="mgmt_methylation" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        MGMT метилирование
+                    </label>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 8px; cursor: pointer;">
+                        <input type="checkbox" name="idh_mutation" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        IDH мутация
+                    </label>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 8px; cursor: pointer;">
+                        <input type="checkbox" name="egfr_amplification" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        EGFR амплификация
+                    </label>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 8px; cursor: pointer;">
+                        <input type="checkbox" name="tert_mutation" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        TERT мутация
+                    </label>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 12px; cursor: pointer;">
+                        <input type="checkbox" name="atrx_mutation" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        ATRX мутация
+                    </label>
+                    <select id="molecularSubtype" name="molecular_subtype" class="form-input" required>
+                        <option value="">Молекулярный подтип</option>
+                        <option value="IDH_MUTANT">IDH мутантный</option>
+                        <option value="MGMT_METHYLATED">MGMT метилированный</option>
+                        <option value="CLASSICAL">Классический</option>
+                    </select>
+            </div>
 
-                <!-- Анамнез и история -->
-                <div class="form-section">
-                    <h3>Анамнез и история</h3>
+            <div class="form-section">
+                <h3 class="section-title">КЛИНИЧЕСКОЕ<br>СОСТОЯНИЕ</h3>
+                    <input type="number" id="kps" name="kps" min="0" max="100" class="form-input" placeholder="Шкала Карновского (0-100)" required>
+                    <textarea id="neurologicalSymptoms" name="neurological_symptoms" class="form-input" placeholder="Неврологические симптомы" required style="min-height: 80px; resize: vertical;"></textarea>
 
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="family_history" value="true">
-                            Семейный анамнез опухолей мозга
-                        </label>
-                    </div>
+                    <p style="font-size: 14px; margin-top: 15px; margin-bottom: 10px;">Лечение</p>
+                    <input type="number" id="steroidDose" name="steroid_dose" step="0.1" min="0" class="form-input" placeholder="Доза стероидов (мг/день)" required>
+                    <label style="display: flex; align-items: center; color: #B9D5E6; font-size: 14px; margin-bottom: 12px; cursor: pointer;">
+                        <input type="checkbox" name="antiseizure_meds" value="true" style="margin-right: 8px; width: 16px; height: 16px;">
+                        Противоэпилептические препараты
+                    </label>
+                    <select id="treatment" name="treatment" class="form-input" required>
+                        <option value="">Тип лечения</option>
+                        <option value="chemotherapy">Химиотерапия</option>
+                        <option value="radiotherapy">Радиотерапия</option>
+                        <option value="chemoradiotherapy">Комбинированный</option>
+                    </select>
+            </div>
 
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="previous_radiation" value="true">
-                            Предыдущая лучевая терапия на область головы
-                        </label>
-                    </div>
-                </div>
+            <div class="form-section" style="grid-column: 1;">
+                <h3 class="section-title">ХИМИОТЕРАПИЯ</h3>
+                    <input type="text" id="chemo_drug" name="chemo_drug" class="form-input" placeholder="Препарат">
+                    <input type="number" id="chemo_dose_mg_per_m2" name="chemo_dose_mg_per_m2" step="0.1" min="0" class="form-input" placeholder="Доза (мг/м²)">
+                    <input type="number" id="chemo_interval_days" name="chemo_interval_days" min="0" class="form-input" placeholder="Периодичность (дни)">
+                    <input type="number" id="chemo_cycles" name="chemo_cycles" min="0" class="form-input" placeholder="Число циклов">
+            </div>
 
-                <div class="form-section">
-                    <h3>Локализация</h3>
-                    <div class="form-group">
-                        <label for="tumorLocation">Локализация опухоли</label>
-                        <select id="tumorLocation" name="tumor_location" required>
-                            <option value="">Выберите локализацию</option>
-                            <option value="frontal_lobe">Лобная доля</option>
-                            <option value="multifocal">Мультифокальная</option>
-                            <option value="occipital_lobe">Затылочная доля</option>
-                            <option value="parietal_lobe">Теменная доля</option>
-                            <option value="temporal_lobe">Височная доля</option>
-                        </select>
-                    </div>
+            <div class="form-section" style="grid-column: 2;">
+                <h3 class="section-title">РАДИОТЕРАПИЯ</h3>
+                    <input type="number" id="radiation_total_dose_Gy" name="radiation_total_dose_Gy" step="0.1" min="0" class="form-input" placeholder="Полная доза (Gy)">
+                    <input type="number" id="radiation_fraction_dose_Gy" name="radiation_fraction_dose_Gy" step="0.1" min="0" class="form-input" placeholder="Доза фракции (Gy)">
+                    <input type="number" id="radiation_fractions" name="radiation_fractions" min="0" class="form-input" placeholder="Число фракций">
+            </div>
 
-                    <div class="form-group">
-                        <label for="lateralization">Латерализация опухоли</label>
-                        <select id="lateralization" name="lateralization" required>
-                            <option value="">Выберите латерализацию</option>
-                            <option value="LEFT">Левая</option>
-                            <option value="RIGHT">Правая</option>
-                            <option value="BILATERAL">Двусторонняя</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="form-section" style="grid-column: 3;">
+                <h3 class="section-title">ВИЗУАЛИЗАЦИЯ</h3>
+                    <select id="resectionExtent" name="resection_extent" class="form-input" required>
+                        <option value="">Объем резекции</option>
+                        <option value="GROSS_TOTAL">Полная резекция</option>
+                        <option value="SUBTOTAL">Субтотальная резекция</option>
+                        <option value="BIOPSY_ONLY">Только биопсия</option>
+                    </select>
+                    <input type="number" id="tumorSizeBefore" name="tumor_size_before" step="0.1" min="0" class="form-input" placeholder="Размер опухоли (см)" required>
+                    <input type="number" id="edemaVolume" name="edema_volume" step="0.1" min="0" class="form-input" placeholder="Объем отека (см³)" required>
+                    <select id="contrastEnhancement" name="contrast_enhancement" class="form-input" required>
+                        <option value="">Контрастное усиление</option>
+                        <option value="NONE">Отсутствует</option>
+                        <option value="PATCHY">Пятнистое</option>
+                        <option value="RING">Кольцевидное</option>
+                        <option value="SOLID">Солидное</option>
+                    </select>
+                    <select id="functionalStatus" name="functional_status" class="form-input" required>
+                        <option value="">Функциональный статус</option>
+                        <option value="INDEPENDENT">Самостоятельный</option>
+                        <option value="REQUIRES_ASSISTANCE">Требует помощи</option>
+                        <option value="FULLY_DEPENDENT">Полностью зависимый</option>
+                    </select>
+            </div>
+        </section>
 
-                <!-- Молекулярные маркеры -->
-                <div class="form-section">
-                    <h3>Молекулярные маркеры</h3>
-
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="mgmt_methylation" value="true">
-                            Метилирование промотора MGMT
-                        </label>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="idh_mutation" value="true">
-                            Мутация в генах IDH1/IDH2
-                        </label>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="egfr_amplification" value="true">
-                            Амплификация EGFR
-                        </label>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="tert_mutation" value="true">
-                            Мутация промотора TERT
-                        </label>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="atrx_mutation" value="true">
-                            Мутация гена ATRX
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="molecularSubtype">Молекулярный подтип</label>
-                        <select id="molecularSubtype" name="molecular_subtype" required>
-                            <option value="">Выберите подтип</option>
-                            <option value="IDH_MUTANT">IDH мутантный</option>
-                            <option value="MGMT_METHYLATED">MGMT метилированный</option>
-                            <option value="CLASSICAL">Классический</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Клиническое состояние -->
-                <div class="form-section">
-                    <h3>Клиническое состояние</h3>
-
-                    <div class="form-group">
-                        <label for="kps">Шкала Карновского (KPS)</label>
-                        <input type="number" id="kps" name="kps" min="0" max="100" placeholder="0-100" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="neurologicalSymptoms">Неврологические симптомы</label>
-                        <textarea id="neurologicalSymptoms" name="neurological_symptoms" placeholder="Введите симптомы через запятую (headache, seizures...)" required></textarea>
-                    </div>
-                </div>
-
-                <!-- Лечение -->
-                <div class="form-section">
-                    <h3>Лечение</h3>
-
-                    <div class="form-group">
-                        <label for="steroidDose">Доза стероидов (мг/день)</label>
-                        <input type="number" id="steroidDose" name="steroid_dose" step="0.1" min="0" placeholder="Например: 8.0" required>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="antiseizure_meds" value="true">
-                            Прием противоэпилептических препаратов
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="treatment">Тип лечения</label>
-                        <select id="treatment" name="treatment" required>
-                            <option value="">Выберите тип лечения</option>
-                            <option value="chemotherapy">Химиотерапия</option>
-                            <option value="radiotherapy">Радиотерапия</option>
-                            <option value="chemoradiotherapy">Комбинированный</option>
-                        </select>
-                    </div>
-
-                    <h3>Заполняется если тип лечения химиотерапия или комбинированный</h3>
-
-                    <div class="form-group">
-                        <label for="chemo_drug">Препарат</label>
-                        <input type="text" id="chemo_drug" name="chemo_drug" placeholder="Например: temozolomide">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="chemo_dose_mg_per_m2">Доза препарата</label>
-                        <input type="number" id="chemo_dose_mg_per_m2" name="chemo_dose_mg_per_m2" step="0.1" min="0" placeholder="Например: 75.0">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="chemo_interval_days">Периодичность приема препарата</label>
-                        <input type="number" id="chemo_interval_days" name="chemo_interval_days" min="0" placeholder="Например: 28">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="chemo_cycles">Число циклов</label>
-                        <input type="number" id="chemo_cycles" name="chemo_cycles" min="0" placeholder="Например: 6">
-                    </div>
-
-                    <h3>Заполняется если тип лечения радиотерапия или комбинированный</h3>
-
-                    <div class="form-group">
-                        <label for="radiation_total_dose_Gy">Полная доза радиации</label>
-                        <input type="number" id="radiation_total_dose_Gy" name="radiation_total_dose_Gy" step="0.1" min="0" placeholder="Например: 60.0">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="radiation_fraction_dose_Gy">Доза фракции</label>
-                        <input type="number" id="radiation_fraction_dose_Gy" name="radiation_fraction_dose_Gy" step="0.1" min="0" placeholder="Например: 2.0">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="radiation_fractions">Число фракций</label>
-                        <input type="number" id="radiation_fractions" name="radiation_fractions" min="0" placeholder="Например: 30">
-                    </div>
-
-
-                </div>
-
-                <!-- Визуализация и лечение -->
-                <div class="form-section">
-                    <h3>Визуализация и лечение</h3>
-
-                    <div class="form-group">
-                        <label for="resectionExtent">Объем резекции</label>
-                        <select id="resectionExtent" name="resection_extent" required>
-                            <option value="">Выберите объем резекции</option>
-                            <option value="GROSS_TOTAL">Полная резекция</option>
-                            <option value="SUBTOTAL">Субтотальная резекция</option>
-                            <option value="BIOPSY_ONLY">Только биопсия</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tumorSizeBefore">Размер опухоли до лечения (см)</label>
-                        <input type="number" id="tumorSizeBefore" name="tumor_size_before" step="0.1" min="0" placeholder="Например: 4.2" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="edemaVolume">Объем перифокального отека (см³)</label>
-                        <input type="number" id="edemaVolume" name="edema_volume" step="0.1" min="0" placeholder="Например: 35.5" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contrastEnhancement">Характер контрастного усиления</label>
-                        <select id="contrastEnhancement" name="contrast_enhancement" required>
-                            <option value="">Выберите тип усиления</option>
-                            <option value="NONE">Отсутствует</option>
-                            <option value="PATCHY">Пятнистое</option>
-                            <option value="RING">Кольцевидное</option>
-                            <option value="SOLID">Солидное</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="functionalStatus">Функциональный статус</label>
-                        <select id="functionalStatus" name="functional_status" required>
-                            <option value="">Выберите функциональный статус</option>
-                            <option value="INDEPENDENT">Самостоятельный</option>
-                            <option value="REQUIRES_ASSISTANCE">Требует помощи</option>
-                            <option value="FULLY_DEPENDENT">Полностью зависимый</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-btn">Сохранить клинический профиль</button>
-            </form>
+        <div class="button-wrapper">
+            <button type="submit" class="submit-btn">АНАЛИЗИРОВАТЬ</button>
         </div>
-    </div>
+            </form>
+    </main>
 {% endblock %}

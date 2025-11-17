@@ -2,53 +2,64 @@
 
 {% block styles %}
     <title>Вход</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="page-title">Войти в систему</h1>
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">VIVIDA</h1>
+        </section>
 
-        <div class="forms-container">
-
-            <section class="form-section">
-                <h2 class="form-title">Войти</h2>
+        <section class="simulator-grid">
+            <div class="form-section">
+                <h2 class="section-title">ВХОД</h2>
                 <form id="loginForm" action="/login" method="post">
                     <div class="form-group">
-                        <label for="login-email">Email</label>
-                        <input type="email" id="login-email" name="email" required>
+                        <input type="email" id="login-email" name="email" class="form-input" placeholder="Email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="login-password">Пароль</label>
-                        <input type="password" id="login-password" name="password" required>
+                        <input type="password" id="login-password" name="password" class="form-input" placeholder="Пароль" required>
                     </div>
 
                     <button type="submit" class="submit-btn">Войти</button>
                 </form>
-            </section>
+            </div>
 
-            <section class="form-section">
-                <h2 class="form-title">Создать аккаунт</h2>
+            <div class="form-section">
+                <h2 class="section-title">СОЗДАТЬ АККАУНТ</h2>
                 <form id="signupForm" action="/signin" method="post">
                     <div class="form-group">
-                        <label for="signup-name">Имя и фамилия</label>
-                        <input type="text" id="signup-name" name="name" required>
+                        <input type="text" id="signup-name" name="name" class="form-input" placeholder="Имя и фамилия" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="signup-email">Email</label>
-                        <input type="email" id="signup-email" name="email" required>
+                        <input type="email" id="signup-email" name="email" class="form-input" placeholder="Email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="signup-password">Пароль</label>
-                        <input type="password" id="signup-password" name="password" required>
+                        <input type="password" id="signup-password" name="password" class="form-input" placeholder="Пароль" required>
                     </div>
 
                     <button type="submit" class="submit-btn">Создать аккаунт</button>
                 </form>
-            </section>
-        </div>
-    </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title">ИНФОРМАЦИЯ</div>
+                <p class="section-text">
+                    VIVIDA - система оптимизации персонализированной схемы химиотерапии на основе математического моделирования роста опухоли и реакции на препараты.
+                </p>
+                <p class="section-text" style="margin-top: 30px;">
+                    Авторы проекта:
+                </p>
+                <p class="section-text" style="font-size: 14px; margin-top: 15px;">
+                    Цуканов Кирилл Сергеевич<br>
+                    Конов Максим Евгеньевич<br>
+                    Вальтуилье Иван Антонович
+                </p>
+            </div>
+        </section>
+    </main>
 {% endblock %}

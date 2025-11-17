@@ -2,13 +2,25 @@
 
 {% block styles %}
     <title>Ошибка</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="page-title">{{ status_code }}</h1>
-        <p>{{ error }}</p>
-        <a href="{{ link }}">Назад</a>
-    </div>
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">ОШИБКА</h1>
+        </section>
+
+        <section class="results">
+            <div class="results-grid">
+                <div class="result-column" style="grid-column: 1 / -1;">
+                    <h3 class="column-title">{{ status_code }}</h3>
+                    <div class="result-content">
+                        <p style="font-size: 18px; line-height: 1.8; margin: 20px 0;">{{ error }}</p>
+                        <a href="{{ link }}" class="submit-btn" style="display: inline-block; margin-top: 20px; text-decoration: none;">ВЕРНУТЬСЯ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}

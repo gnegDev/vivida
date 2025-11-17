@@ -1,18 +1,38 @@
 {% extends 'layout/base_template.html' %}
 
 {% block styles %}
-    <title>Главная страница</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
+    <title>VIVIDA - Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="page-title">Главная страница</h1>
-        <div class="menu-container" style="margin-bottom: 2rem;">
-            <h2 class="menu-title">Меню</h2>
-            <h3>Веб-сервис для оптимизации плана лечения опухолей мозга с использованием AI и ML.</h3>
-            <a href="/auth" class="menu-btn">Начать пользоваться</a>
-            <a href="https://github.com/gnegDev/vivida" class="menu-btn">Исходный код</a>
-        </div>
-    </div>
+    <main class="main">
+        <section class="hero">
+            <h1 class="hero-title">VIVIDA</h1>
+            <a href="/auth" class="hero-link">НАЧАТЬ РАБОТУ</a>
+        </section>
+
+        <section class="content-grid">
+            <div class="grid-item about">
+                <h2 class="section-title">О ПРОЕКТЕ</h2>
+                <p class="section-text">
+                    VIVIDA - система оптимизации персонализированной схемы химиотерапии на основе математического моделирования роста опухоли и реакции на препараты. Использует AI и ML для повышения эффективности лечения.
+                </p>
+            </div>
+
+            <div class="grid-item">
+                <h2 class="section-title">ВОЗМОЖНОСТИ</h2>
+                <p class="section-text">
+                    Анализ клинических данных пациента, прогнозирование результатов лечения, оптимизация схемы терапии, сравнение различных подходов к лечению опухолей головного мозга.
+                </p>
+            </div>
+
+            <div class="grid-item">
+                <h2 class="section-title">ТЕХНОЛОГИЯ</h2>
+                <p class="section-text">
+                    Математическое моделирование, машинное обучение, анализ молекулярных маркеров, прогнозирование на основе исторических данных пациентов и клинических параметров.
+                </p>
+            </div>
+        </section>
+    </main>
 {% endblock %}
