@@ -1,0 +1,34 @@
+{% extends 'layout/base_template.html' %}
+
+{% block styles %}
+    <title>Снимок</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scan_styles.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title">Информация о пациенте</h1>
+        
+        <div class="info-section">
+            <div class="info-panel">
+                <h3 class="info-title">Информация о пациенте</h3>
+                <div class="info-content" id="info1">
+                    {% for key, value in patient_data.items() %}
+                        {% if key != 'patient_chemo_regimen' %}
+                            <p><strong>{{ key }}: </strong>{{ value }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <a href="/dashboard/{{ patient_data['patient_id'] }}/delete" class="panel-button">Удалить данные</a>
+            </div>
+
+            <div class="info-panel">
+                <h3 class="info-title">Оптимизация плана лечения</h3>
+                <div class="info-content" id="info2">
+                    <p><strong>patient_chemo_regimen: </strong>{{ patient_data['patient_chemo_regimen'] }}</p>
+                </div>
+                <a href="/dashboard/{{ patient_data['patient_id'] }}/download" class="panel-button">Скачать отчёт</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

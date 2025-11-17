@@ -1,0 +1,40 @@
+{% extends 'layout/base_template.html' %}
+
+{% block styles %}
+    <title>Дэшборд</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_styles.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title">Загруженные снимки</h1>
+        <div class="panels-grid">
+            {% if patients|length > 0 %}
+                {% for patient in patients %}
+                    <div class="panel">
+                        <div class="panel-content">
+                            <h3 class="panel-title">{{ patient['patient_id'] }}</h3>
+                            <p class="panel-description">
+                                {% if patient['gender'] == 'M' %}
+                                    Мужчина
+                                {% else %}
+                                    Женщина
+                                {% endif %}
+                                , {{ patient['age'] }} лет
+                            </p>
+                            <a href="dashboard/{{ patient['patient_id'] }}" class="panel-button">Подробнее</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="panel">
+                    <div class="panel-content">
+                        <h3 class="panel-title">Нет загруженных снимков</h3>
+                        <p class="panel-description">Загрузите снимок для анализа</p>
+                        <a href="/upload" class="panel-button">Зарузить снимок</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
