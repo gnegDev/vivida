@@ -1,0 +1,37 @@
+{
+  "id": "PATIENT_CHEMO_ONLY",
+  "age": 45,
+  "gender": "F",
+  "tumor_size_before": 2.2,
+  "kps": 90,
+  "resection_extent": "gross_total",
+  "molecular_subtype": "proneural",
+  "tumor_location": "frontal_lobe",
+  "contrast_enhancement": "ring",
+
+  "treatment": "chemotherapy",
+
+  "chemotherapy": {
+    "drug": "Temozolomide",
+    "dose_mg_per_m2": 150,
+    "cycles": 12,
+    "interval_days": 28
+  },
+
+  "mgmt_methylation": true,
+  "idh_mutation": true,
+  "egfr_amplification": false,
+  "tert_mutation": false,
+  "atrx_mutation": true,
+
+  "edema_volume": 1.5,
+  "steroid_dose": 0.0,
+  "antiseizure_meds": false,
+
+  "neurological_symptoms": "asymptomatic",
+
+  "lateralization": "left",
+  "rano_response": "partial_response",
+  "family_history": true,
+  "previous_radiation": true
+}

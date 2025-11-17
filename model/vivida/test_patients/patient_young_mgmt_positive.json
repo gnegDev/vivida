@@ -1,0 +1,44 @@
+{
+  "id": "PATIENT_YOUNG_MGMT",
+  "age": 35,
+  "gender": "M",
+  "tumor_size_before": 2.8,
+  "kps": 100,
+  "resection_extent": "gross_total",
+  "molecular_subtype": "proneural",
+  "tumor_location": "frontal_lobe",
+  "contrast_enhancement": "ring",
+
+  "treatment": "chemoradiotherapy",
+
+  "chemotherapy": {
+    "drug": "Temozolomide",
+    "dose_mg_per_m2": 100,
+    "cycles": 6,
+    "interval_days": 28
+  },
+
+  "radiotherapy": {
+    "total_dose_Gy": 60,
+    "fraction_dose_Gy": 2.0,
+    "fractions": 30,
+    "technique": "IMRT"
+  },
+
+  "mgmt_methylation": true,
+  "idh_mutation": true,
+  "egfr_amplification": false,
+  "tert_mutation": false,
+  "atrx_mutation": true,
+
+  "edema_volume": 2.5,
+  "steroid_dose": 4.0,
+  "antiseizure_meds": false,
+
+  "neurological_symptoms": "headache",
+
+  "lateralization": "left",
+  "rano_response": "partial_response",
+  "family_history": false,
+  "previous_radiation": false
+}

@@ -1,0 +1,7 @@
+{
+  "id": "PATIENT_MINIMAL",
+  "age": 62,
+  "tumor_size_before": 4.0,
+  "kps": 70,
+  "treatment": "chemoradiotherapy"
+}
