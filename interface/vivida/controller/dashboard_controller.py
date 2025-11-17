@@ -21,7 +21,8 @@ def render_main_page():
     for patient in user.json()["patient_clinical_profiles"]:
         patients.append({
             "patient_id":  patient["id"],
-            "chemo_regimen": patient["patient_chemo_regimen"]
+            "gender": patient["gender"],
+            "age": patient["age"]
         })
 
     return render_template("dashboard_template.html", patients=patients)

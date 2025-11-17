@@ -1,16 +1,16 @@
 {% extends 'layout/base_template.html' %}
 
 {% block styles %}
-    <title>Загрузка снимка</title>
+    <title>Загрузка плана</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/upload_styles.css') }}">
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        <h1 class="page-title">Анализ снимка</h1>
+        <h1 class="page-title">Анализ плана лечения</h1>
         
         <div class="form-container">
-            <h2 class="form-title">Данные о снимке</h2>
+            <h2 class="form-title">Данные о плане лечения</h2>
             <form id="clinicalProfileForm" action="/upload" method="post">
     <!-- Основная информация -->
                 <div class="form-section">
@@ -30,8 +30,8 @@
                         <label for="gender">Пол пациента</label>
                         <select id="gender" name="gender" required>
                             <option value="">Выберите пол</option>
-                            <option value="М">Мужской</option>
-                            <option value="Ж">Женский</option>
+                            <option value="M">Мужской</option>
+                            <option value="F">Женский</option>
                         </select>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
 
                     <div class="form-group">
                         <label for="neurologicalSymptoms">Неврологические симптомы</label>
-                        <textarea id="neurologicalSymptoms" name="neurological_symptoms" placeholder="Введите симптомы через запятую (головная боль, судороги, проблемы с речью...)" required></textarea>
+                        <textarea id="neurologicalSymptoms" name="neurological_symptoms" placeholder="Введите симптомы через запятую (headache, seizures...)" required></textarea>
                     </div>
                 </div>
 
@@ -163,10 +163,15 @@
 
                     <div class="form-group">
                         <label for="treatment">Тип лечения</label>
-                        <input type="text" id="treatment" name="treatment" placeholder="Например: химиотерапия, лучевая терапия..." required>
+                        <select id="treatment" name="treatment" required>
+                            <option value="">Выберите тип лечения</option>
+                            <option value="chemotherapy">Химиотерапия</option>
+                            <option value="radiotherapy">Радиотерапия</option>
+                            <option value="chemoradiotherapy">Комбинированный</option>
+                        </select>
                     </div>
 
-                    <h3>Заполняется если тип лечения химиотерапия или комбинированное</h3>
+                    <h3>Заполняется если тип лечения химиотерапия или комбинированный</h3>
 
                     <div class="form-group">
                         <label for="chemo_drug">Препарат</label>
@@ -188,7 +193,7 @@
                         <input type="number" id="chemo_cycles" name="chemo_cycles" min="0" placeholder="Например: 6">
                     </div>
 
-                    <h3>Заполняется если тип лечения радиотерапия или комбинированное</h3>
+                    <h3>Заполняется если тип лечения радиотерапия или комбинированный</h3>
 
                     <div class="form-group">
                         <label for="radiation_total_dose_Gy">Полная доза радиации</label>

@@ -7,4 +7,4 @@ RUN pip3 install --upgrade pip -r requirements.txt
 
 WORKDIR vivida
 
-ENTRYPOINT ["python3", "main.py"]
+ENTRYPOINT ["python3", "app.py"]

@@ -1,4 +1,4 @@
-FROM maven:latest
+FROM maven:3.9.11
 LABEL authors="gneg"
 
 COPY vivida/pom.xml .

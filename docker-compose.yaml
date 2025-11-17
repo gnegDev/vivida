@@ -1,5 +1,5 @@
 services:
-  scanity_interface:
+  interface:
     build: interface
     ports:
       - "5000:5000"
@@ -29,10 +29,10 @@ services:
       - s3
       - model
 
-#  model:
-#    build: model
-#    ports:
-#      - "5050:5050"
+  model:
+    build: model
+    ports:
+      - "5050:5050"
 
   db:
     image: postgres:17.4

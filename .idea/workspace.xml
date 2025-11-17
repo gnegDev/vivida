@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f853271d-85ed-425e-b24e-a67e35f96b34" name="Changes" comment="gitignore">
+      <change beforePath="$PROJECT_DIR$/service/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/.idea/compiler.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;gnegDev&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/gnegDev/vivida.git&quot;,
+    &quot;accountId&quot;: &quot;467d2233-ef1f-4778-b75e-f693a5d7d03f&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="35bMIWArCoNUkRBejsbxAhNSxj9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/gneg/Code/ProdTest"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="vivida" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="vivida" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f853271d-85ed-425e-b24e-a67e35f96b34" name="Changes" comment="final?" />
+      <created>1763374239634</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763374239634</updated>
+    </task>
+    <task id="LOCAL-00001" summary="final?">
+      <option name="closed" value="true" />
+      <created>1763374370797</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763374370797</updated>
+    </task>
+    <task id="LOCAL-00002" summary="gitignore added">
+      <option name="closed" value="true" />
+      <created>1763374506945</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763374506945</updated>
+    </task>
+    <task id="LOCAL-00003" summary="gitignore added">
+      <option name="closed" value="true" />
+      <created>1763374512966</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763374512966</updated>
+    </task>
+    <task id="LOCAL-00004" summary="gitignore added">
+      <option name="closed" value="true" />
+      <created>1763374520294</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763374520294</updated>
+    </task>
+    <task id="LOCAL-00005" summary="removed large files">
+      <option name="closed" value="true" />
+      <created>1763374541532</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763374541532</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Revert &quot;ml api + db + idi_nahu&quot;&#10;&#10;This reverts commit d9a6be5a">
+      <option name="closed" value="true" />
+      <created>1763374657729</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763374657729</updated>
+    </task>
+    <task id="LOCAL-00007" summary="gitignore">
+      <option name="closed" value="true" />
+      <created>1763375100578</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1763375100578</updated>
+    </task>
+    <task id="LOCAL-00008" summary="gitignore">
+      <option name="closed" value="true" />
+      <created>1763375135800</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1763375135800</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="interface" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="final?" />
+    <MESSAGE value="gitignore added" />
+    <MESSAGE value="removed large files" />
+    <MESSAGE value="Revert &quot;ml api + db + idi_nahu&quot;&#10;&#10;This reverts commit d9a6be5a" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+  </component>
+</project>

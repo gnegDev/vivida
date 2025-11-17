@@ -33,7 +33,7 @@ public class PatientClinicalProfile {
     @JoinColumn(name = "patient_chemo_regimen_id")
     @JsonManagedReference
     @JsonProperty("patient_chemo_regimen")
-    private PatientChemoRegimen patientChemoRegimen;
+    private PatientClinicalRegimen patientClinicalRegimen;
 
     @Column(name = "stage", nullable = false)
     private Integer stage;
@@ -88,11 +88,9 @@ public class PatientClinicalProfile {
     @Column(name = "kps", nullable = false)
     private Integer kps;
 
-    @ElementCollection
     @Column(name = "neurological_symptoms")
-    @CollectionTable(name = "patient_clinical_profile_neurological_symptoms", joinColumns = @JoinColumn(name = "owner_id"))
     @JsonProperty("neurological_symptoms")
-    private List<String> neurologicalSymptoms = new ArrayList<>();
+    private String neurologicalSymptoms;
 
     @Column(name = "treatment", nullable = false)
     private String treatment;
@@ -128,31 +126,11 @@ public class PatientClinicalProfile {
     @JsonProperty("functional_status")
     private FunctionalStatus functionalStatus;
 
-    @Column(name = "chemo_drug")
-    @JsonProperty("chemo_drug")
-    private String chemoDrug;
+    @Embedded
+    @JsonProperty("chemotherapy_treatment_profile")
+    private ChemotherapyTreatmentProfile chemotherapyTreatmentProfile;
 
-    @Column(name = "chemo_dose")
-    @JsonProperty("chemo_dose_mg_per_m2")
-    private Float chemoDose;
-
-    @Column(name = "chemo_interval_days")
-    @JsonProperty("chemo_interval_days")
-    private Integer chemoIntervalDays;
-
-    @Column(name = "chemo_cycles")
-    @JsonProperty("chemo_cycles")
-    private Integer chemoCycles;
-
-    @Column(name = "radiation_total_dose")
-    @JsonProperty("radiation_total_dose_Gy")
-    private Float radiationTotalDose;
-
-    @Column(name = "radiation_fraction_dose")
-    @JsonProperty("radiation_fraction_dose_Gy")
-    private Float radiationFractionDose;
-
-    @Column(name = "radiation_fractions")
-    @JsonProperty("radiation_fractions")
-    private Integer radiationFractions;
+    @Embedded
+    @JsonProperty("radiotherapy_treatment_profile")
+    private RadiotherapyTreatmentProfile radiotherapyTreatmentProfile;
 }

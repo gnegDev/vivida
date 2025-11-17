@@ -1,0 +1,44 @@
+{
+  "id": "PATIENT_ELDERLY_AGGRESSIVE",
+  "age": 72,
+  "gender": "F",
+  "tumor_size_before": 5.2,
+  "kps": 60,
+  "resection_extent": "subtotal",
+  "molecular_subtype": "mesenchymal",
+  "tumor_location": "temporal_lobe",
+  "contrast_enhancement": "heterogeneous",
+
+  "treatment": "chemoradiotherapy",
+
+  "chemotherapy": {
+    "drug": "Temozolomide",
+    "dose_mg_per_m2": 75,
+    "cycles": 6,
+    "interval_days": 28
+  },
+
+  "radiotherapy": {
+    "total_dose_Gy": 50,
+    "fraction_dose_Gy": 2.0,
+    "fractions": 25,
+    "technique": "3D-CRT"
+  },
+
+  "mgmt_methylation": false,
+  "idh_mutation": false,
+  "egfr_amplification": true,
+  "tert_mutation": true,
+  "atrx_mutation": false,
+
+  "edema_volume": 9.8,
+  "steroid_dose": 16.0,
+  "antiseizure_meds": true,
+
+  "neurological_symptoms": "headache, motor_deficit, seizures, cognitive_decline",
+
+  "lateralization": "right",
+  "rano_response": "progressive_disease",
+  "family_history": false,
+  "previous_radiation": false
+}

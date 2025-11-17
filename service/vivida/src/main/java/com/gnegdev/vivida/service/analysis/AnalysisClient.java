@@ -1,6 +1,6 @@
 package com.gnegdev.vivida.service.analysis;
 
-import com.gnegdev.vivida.data.dto.PatientChemoRegimentResponse;
+import com.gnegdev.vivida.data.dto.PatientClinicalRegimentResponse;
 import com.gnegdev.vivida.data.entity.PatientClinicalProfile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -15,13 +15,13 @@ public class AnalysisClient {
 
     private final RestClient restClient = RestClient.create();
 
-    public PatientChemoRegimentResponse analyzePatientClinicalProfile(PatientClinicalProfile patientClinicalProfile) {
-        ResponseEntity<PatientChemoRegimentResponse> response = restClient.post()
-                .uri(endpoint + "/analyze")
+    public PatientClinicalRegimentResponse analyzePatientClinicalProfile(PatientClinicalProfile patientClinicalProfile) {
+        ResponseEntity<PatientClinicalRegimentResponse> response = restClient.post()
+                .uri(endpoint + "/optimize/summary")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(patientClinicalProfile)
                 .retrieve()
-                .toEntity(PatientChemoRegimentResponse.class);
+                .toEntity(PatientClinicalRegimentResponse.class);
 
         return response.getBody();
     }
